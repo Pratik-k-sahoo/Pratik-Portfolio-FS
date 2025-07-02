@@ -44,7 +44,7 @@ const ContactSection = () => {
 						</div>
 						<div>
 							<Link
-								to={"/connect-me"}
+								to={"/raise-ticket"}
 								className="text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl gap-2 w-max"
 							>
 								<span className="font-semibold">Raise Ticket</span>

@@ -13,6 +13,8 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import useGetProfile from "./hooks/useGetProfile";
 import useGetProjects from "./hooks/useGetProjects";
 import UpdateProfile from "./page/UpdateProfile";
+import CheckAuth from "./components/Check-Auth";
+import Tickets from "./page/Tickets";
 
 const appRouter = createBrowserRouter([
 	{
@@ -52,6 +54,20 @@ const appRouter = createBrowserRouter([
 				),
 			},
 			{
+				path: "raise-ticket",
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: (
+							<CheckAuth isProtected={true}>
+								<Tickets />
+							</CheckAuth>
+						),
+					},
+				],
+			},
+			{
 				path: "register",
 				element: <Register />,
 			},
@@ -73,7 +89,7 @@ const appRouter = createBrowserRouter([
 				children: [
 					{
 						path: "update-profile",
-						element: <UpdateProfile />
+						element: <UpdateProfile />,
 					},
 				],
 			},
