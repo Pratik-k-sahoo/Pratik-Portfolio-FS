@@ -90,7 +90,7 @@ const AboutSection = () => {
 				/>
 				<div className="mt-20 overflow-hidden">
 					<pre
-						className="font-semibold  uppercase tracking-widest bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text lg:text-lg text-center text-wrap"
+						className="font-semibold  uppercase tracking-widest bg-linear-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text lg:text-lg text-center text-wrap"
 						ref={containerRef}
 					>
 						{expand ? profile?.about : profile?.about?.split("\n")[0] + "..."}
@@ -195,7 +195,7 @@ const AboutSection = () => {
 								{profile?.skills?.language?.map((lang, idx) => (
 									<motion.div
 										key={idx}
-										className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 cursor-pointer"
+										className="inline-flex items-center gap-2 px-6 bg-linear-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 cursor-pointer"
 										drag
 										dragConstraints={languageRef}
 									>
@@ -233,7 +233,7 @@ const AboutSection = () => {
 									?.concat(profile?.skills?.others)
 									?.map((item, idx) => (
 										<div
-											className="p-1 px-3 border border-white/15 bg-white/10 backdrop-blur rounded-full w-fit cursor-pointer hover:bg-white/20 transition-colors duration-200"
+											className="p-1 px-3 border border-white/15 bg-white/10 backdrop-blur-sm rounded-full w-fit cursor-pointer hover:bg-white/20 transition-colors duration-200"
 											key={idx}
 											onClick={() => {
 												const link = `https://www.google.com/search?q=${encodeURIComponent(
@@ -258,7 +258,7 @@ const AboutSection = () => {
 							<div className="flex flex-wrap gap-2 p-4 px-10">
 								{profile?.skills?.database?.map((item, idx) => (
 									<div
-										className="p-1 px-3 border border-white/15 bg-white/10 backdrop-blur rounded-full w-fit cursor-pointer"
+										className="p-1 px-3 border border-white/15 bg-white/10 backdrop-blur-sm rounded-full w-fit cursor-pointer"
 										key={idx}
 										onClick={() => {
 											const link = `https://www.google.com/search?q=${encodeURIComponent(
@@ -312,7 +312,7 @@ const AboutSection = () => {
 								{hobbies.map((hobby, idx) => (
 									<motion.div
 										key={idx}
-										className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute cursor-pointer"
+										className="inline-flex items-center gap-2 px-6 bg-linear-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute cursor-pointer"
 										style={{
 											left: hobby.left,
 											top: hobby.top,
@@ -332,11 +332,11 @@ const AboutSection = () => {
 							<img
 								src={mapImage}
 								alt="map"
-								className="h-full w-full object-cover object-left-top"
+								className="h-full w-full object-cover object-top-left"
 							/>
-							<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
-								<div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
-								<div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10"></div>
+							<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[''] after:absolute after:inset-0 after:outline-solid after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+								<div className="absolute inset-0 rounded-full bg-linear-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
+								<div className="absolute inset-0 rounded-full bg-linear-to-r from-emerald-300 to-sky-400 -z-10"></div>
 								<img src={smileEmoji} alt="Smiling Emoji" className="size-20" />
 							</div>
 						</Card>

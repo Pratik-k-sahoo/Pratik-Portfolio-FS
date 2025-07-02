@@ -9,11 +9,11 @@ const ProjectCard = ({ project, idx }) => {
 		<div className="sticky" style={{
       top: `calc(64px + ${idx * 40}px)`
     }}>
-			<div className="bg-gray-800 rounded-3xl relative z-0 after:z-10 overflow-hidden after:content-[''] after:absolute after:inset-0 after:outline-2 after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 px-8 pt-8 md:pt-12 md:px-10 lg:pt-16 lg:px-20 after:pointer-events-none">
+			<div className="bg-gray-800 rounded-3xl relative z-0 after:z-10 overflow-hidden after:content-[''] after:absolute after:inset-0 after:outline-2 after:outline-solid after:-outline-offset-2 after:rounded-3xl after:outline-white/20 px-8 pt-8 md:pt-12 md:px-10 lg:pt-16 lg:px-20 after:pointer-events-none">
 				<div className="lg:grid lg:grid-cols-2 lg:gap-16">
 					<div className="lg:pb-16">
 						<div className="flex justify-center">
-							<div className="bg-gradient-to-r from-emerald-400 to-sky-400 text-transparent bg-clip-text font-bold inline-flex tracking-widest md:text-lg">
+							<div className="bg-linear-to-r from-emerald-400 to-sky-400 text-transparent bg-clip-text font-bold inline-flex tracking-widest md:text-lg">
 								{project.year}
 							</div>
 						</div>

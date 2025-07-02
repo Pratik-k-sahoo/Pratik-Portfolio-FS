@@ -31,11 +31,11 @@ const Header = ({ page }) => {
 		<div className="w-full flex justify-center items-center fixed top-3 sm:flex-col md:flex-row lg:flex-row gap-1 z-50">
 			<Link
 				to={"/"}
-				className="sm:text-xl md:text-2xl lg:text-3xl flex-start font-bold text-white cursor-pointer p-2 backdrop-blur hover:text-white/80 transition duration-150 md:absolute rounded-full lg:left-12 md:left-3"
+				className="sm:text-xl md:text-2xl lg:text-3xl flex-start font-bold text-white cursor-pointer p-2 backdrop-blur-sm hover:text-white/80 transition duration-150 md:absolute rounded-full lg:left-12 md:left-3"
 			>
 				{profile?.name}
 			</Link>
-			<nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur items-center justify-center">
+			<nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-sm items-center justify-center">
 				<Link
 					className={`${active === "home" ? "nav-item-active" : "nav-item"}`}
 					to="/"
@@ -68,7 +68,7 @@ const Header = ({ page }) => {
 				</Link>
 			</nav>
 			{!user && (
-				<nav className="flex gap-1 p-0.5 border border-white/15 bg-white/10 backdrop-blur items-center justify-center md:absolute rounded-full lg:right-12 md:right-3">
+				<nav className="flex gap-1 p-0.5 border border-white/15 bg-white/10 backdrop-blur-sm items-center justify-center md:absolute rounded-full lg:right-12 md:right-3">
 					<Link
 						className={`${
 							active === "register" ? "nav-item-active" : "nav-item"
@@ -88,7 +88,7 @@ const Header = ({ page }) => {
 				</nav>
 			)}
 			{user && (
-				<nav className="flex gap-1 p-0.5 border border-white/15 bg-white/10 backdrop-blur items-center justify-center md:absolute rounded-full lg:right-12 md:right-3">
+				<nav className="flex gap-1 p-0.5 border border-white/15 bg-white/10 backdrop-blur-sm items-center justify-center md:absolute rounded-full lg:right-12 md:right-3">
 					<Link
 						className={`${active === "login" ? "nav-item-active" : "nav-item"}`}
 						onClick={handleLogout}

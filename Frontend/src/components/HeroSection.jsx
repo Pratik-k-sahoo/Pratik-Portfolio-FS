@@ -14,7 +14,7 @@ const HeroSection = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="py-32 sm:pt-40 md:py-48 lg:py-32 relative z-0 overflow-x-clip overflow-y-hidden">
-			<div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_50%,transparent)]">
+			<div className="absolute inset-0 mask-[linear-gradient(to_bottom,transparent,black_10%,black_50%,transparent)]">
 				<div
 					className="absolute sm:block md:hidden inset-0 h-full"
 					style={{
@@ -23,7 +23,7 @@ const HeroSection = () => {
 					}}
 				></div>
 			</div>
-			<div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
+			<div className="absolute inset-0 mask-[linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
 				<div className="size-[420px] hero-ring"></div>
 				<div className="size-[620px] hero-ring"></div>
 				<div className="size-[820px] hero-ring"></div>

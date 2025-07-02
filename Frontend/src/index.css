@@ -1,28 +1,126 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 769px;
+  --breakpoint-lg: 1200px;
+
+  --font-sans: Inter, serif;
+  --font-serif: Calistoga, serif;
+
+  --animate-ping-large: ping-large 1s ease-in-out infinite;
+  --animate-move-left: move-left 1s linear infinite;
+  --animate-move-right: move-right 1s linear infinite;
+  --animate-wave: wave 1.5s linear infinite;
+
+  @keyframes ping-large {
+    75%,
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+  @keyframes move-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes move-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(-6deg);
+    }
+    70% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-2deg);
+    }
+    90% {
+      transform: rotate(8deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= theme(--breakpoint-md)) {
+    padding-inline: 2rem;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.container {
+  @apply lg:max-w-5xl sm:max-w-full;
+}
+
+.nav-item {
+  @apply px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition duration-300;
+}
+.nav-item-active {
+  @apply px-4 py-1.5 rounded-full text-sm font-semibold transition duration-300 bg-white text-gray-900 hover:bg-white/70 hover:text-gray-900;
+}
+
+.hero-ring {
+  @apply absolute sm:hidden md:block inset-0 border-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-emerald-300/5 shadow-[0_0_80px_inset] shadow-emerald-300/5;
+}
 
 @layer base {
-  .nav-item {
-    @apply py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition duration-300;
-  }
-  .nav-item-active {
-    @apply py-1.5 rounded-full text-white/70 text-sm font-semibold transition duration-300 bg-white text-gray-900 hover:bg-white/70 hover:text-gray-900;
-  }
-
-  .hero-ring {
-    @apply absolute sm:hidden md:block inset-0 border-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-emerald-300/5 shadow-[0_0_80px_inset] shadow-emerald-300/5;
-  }
+  
 
   .hide-arrow[type="number"]::-webkit-inner-spin-button,
 .hide-arrow[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-}
-
-@layer utilities {
-  .container {
-    @apply lg:max-w-5xl sm:max-w-[100%];
-  }
 }

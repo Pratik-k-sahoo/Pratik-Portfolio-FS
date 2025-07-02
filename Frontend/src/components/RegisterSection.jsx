@@ -64,7 +64,7 @@ const RegisterSection = () => {
 								name="username"
 								value={username}
 								onChange={(e) => setUsername(e.target.value)}
-								className="rounded-lg text-black p-2"
+								className="rounded-lg text-black p-2 bg-white"
 							/>
 						</div>
 						<div className="m-5 flex gap-4 justify-between w-96">
@@ -75,7 +75,7 @@ const RegisterSection = () => {
 								name="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
-								className="rounded-lg text-black p-2"
+								className="rounded-lg text-black p-2 bg-white"
 							/>
 						</div>
 						<div className="m-5 flex gap-4 justify-between w-96">
@@ -86,7 +86,7 @@ const RegisterSection = () => {
 								name="password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
-								className="rounded-lg text-black p-2"
+								className="rounded-lg text-black p-2 bg-white"
 							/>
 						</div>
 						<div className="m-5 flex justify-center w-96">

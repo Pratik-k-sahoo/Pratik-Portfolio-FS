@@ -61,7 +61,7 @@ const ConnectSection = () => {
 								onChange={(e) =>
 									setConnectMsg({ ...connectMsg, name: e.target.value })
 								}
-								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-sm outline-none border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white"
+								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white"
 							/>
 							<input
 								type="number"
@@ -72,7 +72,7 @@ const ConnectSection = () => {
 									setConnectMsg({ ...connectMsg, mobile: e.target.value })
 								}
 								placeholder="Mobile Number"
-								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-sm outline-none border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white hide-arrow"
+								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white hide-arrow"
 							/>
 						</div>
 						<div className="mb-4 flex justify-center gap-8">
@@ -84,7 +84,7 @@ const ConnectSection = () => {
 								placeholder="Username"
 								value={user?.username || ""}
 								disabled={user?.username ? true : false}
-								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-sm outline-none border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
+								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
 									user?.username ? "cursor-not-allowed" : ""
 								}`}
 							/>
@@ -95,7 +95,7 @@ const ConnectSection = () => {
 								required
 								value={user?.email || ""}
 								placeholder="Email Address"
-								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-sm outline-none border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
+								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
 									user?.email ? "cursor-not-allowed" : ""
 								}`}
 							/>
@@ -108,7 +108,7 @@ const ConnectSection = () => {
 								onChange={(e) =>
 									setConnectMsg({ ...connectMsg, message: e.target.value })
 								}
-								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-sm outline-none border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white"
+								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white"
 							></textarea>
 						</div>
 						<div className="flex justify-center gap-8">

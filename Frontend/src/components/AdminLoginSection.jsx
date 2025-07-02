@@ -64,7 +64,7 @@ const AdminLoginSection = () => {
 									console.log(e.target.value);
 									setUsername(e.target.value);
 								}}
-								className="rounded-lg text-black p-2"
+								className="rounded-lg text-black p-2 bg-white"
 							/>
 						</div>
 
@@ -76,7 +76,7 @@ const AdminLoginSection = () => {
 								name="password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
-								className="rounded-lg text-black p-2"
+								className="rounded-lg text-black p-2 bg-white"
 							/>
 						</div>
 						<div className="m-5 flex justify-center w-96">

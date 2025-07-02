@@ -9,7 +9,7 @@ const ContactSection = () => {
 			id="contact-me"
 		>
 			<div className="container grid gap-8">
-				<div className="bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left">
+				<div className="bg-linear-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left">
 					<div className="flex flex-col gap-8 md:gap-16 md:flex-row items-center">
 						<div>
 							<h2 className="font-serif text-2xl md:text-3xl">
@@ -32,7 +32,7 @@ const ContactSection = () => {
 					</div>
 				</div>
 
-				<div className="bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left">
+				<div className="bg-linear-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left">
 					<div className="flex flex-col gap-8 md:gap-16 md:flex-row items-center">
 						<div>
 							<h2 className="font-serif text-2xl md:text-3xl">
