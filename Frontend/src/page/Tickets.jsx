@@ -54,47 +54,49 @@ const Tickets = () => {
 	};
 
 	return (
-		<div className="p-4 max-w-3xl mx-auto">
-			<h2 className="text-2xl font-bold mb-4">Create Ticket</h2>
+		<div className="py-16 pt-20 lg:py-24 lg:pt-20 sm:pt-40 md:pt-32">
+			<div className="container">
+				<h2 className="text-2xl font-bold mb-4">Create Ticket</h2>
 
-			<form onSubmit={handleSubmit} className="space-y-3 mb-8">
-				<input
-					name="title"
-					value={form.title}
-					onChange={handleChange}
-					placeholder="Ticket Title"
-					className="input input-bordered w-full"
-					required
-				/>
-				<textarea
-					name="description"
-					value={form.description}
-					onChange={handleChange}
-					placeholder="Ticket Description"
-					className="textarea textarea-bordered w-full"
-					required
-				></textarea>
-				<button className="btn btn-primary" type="submit" disabled={loading}>
-					{loading ? "Submitting..." : "Submit Ticket"}
-				</button>
-			</form>
+				<form onSubmit={handleSubmit} className="space-y-3 mb-8">
+					<input
+						name="title"
+						value={form.title}
+						onChange={handleChange}
+						placeholder="Ticket Title"
+						className="input input-bordered w-full"
+						required
+					/>
+					<textarea
+						name="description"
+						value={form.description}
+						onChange={handleChange}
+						placeholder="Ticket Description"
+						className="textarea textarea-bordered w-full"
+						required
+					></textarea>
+					<button className="btn btn-primary" type="submit" disabled={loading}>
+						{loading ? "Submitting..." : "Submit Ticket"}
+					</button>
+				</form>
 
-			<h2 className="text-xl font-semibold mb-2">All Tickets</h2>
-			<div className="space-y-3">
-				{filterTicket?.map((ticket) => (
-					<Link
-						key={ticket._id}
-						className="card shadow-md p-4 bg-gray-800"
-						to={`/tickets/${ticket._id}`}
-					>
-						<h3 className="font-bold text-lg">{ticket.title}</h3>
-						<p className="text-sm">{ticket.description}</p>
-						<p className="text-sm text-gray-500">
-							Created At: {new Date(ticket.createdAt).toLocaleString()}
-						</p>
-					</Link>
-				))}
-				{tickets?.length === 0 && <p>No tickets submitted yet.</p>}
+				<h2 className="text-xl font-semibold mb-2">All Tickets</h2>
+				<div className="space-y-3">
+					{filterTicket?.map((ticket) => (
+						<Link
+							key={ticket._id}
+							className="card shadow-md p-4 bg-gray-800"
+							to={`/tickets/${ticket._id}`}
+						>
+							<h3 className="font-bold text-lg">{ticket.title}</h3>
+							<p className="text-sm">{ticket.description}</p>
+							<p className="text-sm text-gray-500">
+								Created At: {new Date(ticket.createdAt).toLocaleString()}
+							</p>
+						</Link>
+					))}
+					{tickets?.length === 0 && <p>No tickets submitted yet.</p>}
+				</div>
 			</div>
 		</div>
 	);
