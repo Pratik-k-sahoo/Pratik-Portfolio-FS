@@ -1,7 +1,7 @@
-const Admin = require("../models/admin.model");
-const { uploadImageToCloud } = require("../services/image.service");
+import Admin from "../models/admin.model.js";
+import { uploadImageToCloud } from "../services/image.service.js";
 
-const addDetails = async (
+export const addDetails = async (
 	name,
 	IAM,
 	image,
@@ -49,7 +49,7 @@ const addDetails = async (
 	}
 };
 
-const getProfile = async () => {
+export const getProfile = async () => {
 	try {
 		const profile = await Admin.findOne();
 		if (!profile) {
@@ -62,7 +62,7 @@ const getProfile = async () => {
 	}
 };
 
-const updateProfile = async (profileData, image, resume) => {
+export const updateProfile = async (profileData, image, resume) => {
 	try {
 		const profile = await getProfile();
 		const updateData = {
@@ -100,8 +100,4 @@ const updateProfile = async (profileData, image, resume) => {
 	}
 };
 
-module.exports = {
-	addDetails,
-	getProfile,
-	updateProfile,
-};
+

@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from "jsonwebtoken";
 
-const isAdmin = (req, res, next) => {
+export const isAdmin = (req, res, next) => {
 	const token =
 		req.headers["authorization"]?.split(" ")[1] || req.cookies.token;
 	if (!token) {
@@ -18,8 +18,4 @@ const isAdmin = (req, res, next) => {
 	} catch (error) {
 		return res.status(401).json({ message: "Invalid token.", error });
 	}
-};
-
-module.exports = {
-	isAdmin,
 };

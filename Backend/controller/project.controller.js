@@ -1,8 +1,8 @@
-const Admin = require("../models/admin.model");
-const Project = require("../models/project.model");
-const { uploadImageToCloud } = require("../services/image.service");
+import Admin from "../models/admin.model.js";
+import Project from "../models/project.model.js";
+import { uploadImageToCloud } from "../services/image.service.js";
 
-const createProject = async (name, description, year, image, visit) => {
+export const createProject = async (name, description, year, image, visit) => {
 	try {
 		if (!name || !description || !year || !image || !visit) {
 			throw new Error("All fields are required");
@@ -35,7 +35,7 @@ const createProject = async (name, description, year, image, visit) => {
 	}
 };
 
-const getProjects = async () => {
+export const getProjects = async () => {
 	try {
 		const projects = await Project.find().sort({ year: -1 });
 		if (!projects || projects.length === 0) {
@@ -46,9 +46,4 @@ const getProjects = async () => {
 		console.error("Error retrieving projects:", error);
 		throw error;
 	}
-};
-
-module.exports = {
-	createProject,
-	getProjects,
 };

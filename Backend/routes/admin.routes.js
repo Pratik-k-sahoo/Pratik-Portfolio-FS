@@ -1,18 +1,11 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const {
-	createProject,
-	getProjects,
-} = require("../controller/project.controller");
-const { isAdmin } = require("../middleware/admin.middleware");
-const {
-	addDetails,
-	getProfile,
-	updateProfile,
-} = require("../controller/admin.controller");
-const multer = require("multer");
-const { uploadImageToCloud } = require("../services/image.service");
+import jwt from "jsonwebtoken";
+import { createProject, getProjects } from "../controller/project.controller.js";
+import { isAdmin } from "../middleware/admin.middleware.js";
+import { addDetails, getProfile, updateProfile } from "../controller/admin.controller.js";
+import multer from "multer";
+import { uploadImageToCloud } from "../services/image.service.js";
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -170,4 +163,4 @@ router.post(
 	}
 );
 
-module.exports = router;
+export default router;

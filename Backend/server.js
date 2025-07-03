@@ -1,7 +1,7 @@
-const http = require("http");
-const app = require("./index");
+import http from "http";
+import app from "./index.js"
 const port = process.env.PORT || 3000;
-const connectDB = require("./config/connectDB");
+import connectDB from "./config/connectDB.js";
 
 const server = http.createServer(app);
 

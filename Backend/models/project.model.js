@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const projectSchema = new mongoose.Schema(
+const projectSchema = new Schema(
 	{
 		name: {
 			type: String,
@@ -31,20 +31,19 @@ const projectSchema = new mongoose.Schema(
 			},
 		},
 		description: {
-      type: [String],
-      required: true,
-      validate: {
-        validator: function (v) {
-          return v.length > 0;
-        },
-        message: "Description must contain at least one line.",
-      },
-    },
-  },   
+			type: [String],
+			required: true,
+			validate: {
+				validator: function (v) {
+					return v.length > 0;
+				},
+				message: "Description must contain at least one line.",
+			},
+		},
+	},
 	{
 		timestamps: true,
 	}
 );
 
-const Project = mongoose.model("Project", projectSchema);
-module.exports = Project;
+export default model("Project", projectSchema);

@@ -1,8 +1,6 @@
-const User = require("../models/user.model");
-const express = require("express");
+import express from "express";
 const router = express.Router();
-
-const { createUser, loginUser } = require("../controller/user.controller");
+import { createUser, loginUser } from "../controller/user.controller.js";
 
 router.post("/register", async (req, res) => {
 	const { username, email, password } = req.body;
@@ -66,4 +64,4 @@ router.get("/logout", (req, res) => {
 	res.status(200).json({ message: "Logout successful" });
 });
 
-module.exports = router;
+export default router;

@@ -1,11 +1,11 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
-const cors = require("cors");
-const express = require("express");
+import cors from "cors"
+import express from "express";
 const app = express();
-const cookieParser = require("cookie-parser");
-const userRoutes = require("./routes/user.routes");
-const adminRoutes = require("./routes/admin.routes");
+import cookieParser from "cookie-parser";
+import userRoutes from "./routes/user.routes.js"
+import adminRoutes from "./routes/admin.routes.js"
 
 app.use(cors());
 app.use(express.json());
@@ -19,4 +19,4 @@ app.get("/", (req, res) => {
 	res.send("Hello World");
 });
 
-module.exports = app;
+export default app;
