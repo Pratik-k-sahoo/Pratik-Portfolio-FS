@@ -13,6 +13,9 @@ import { onUserSignup } from "./inngest/function/on-signup.js";
 import { onTicketCreated } from "./inngest/function/on-ticket-create.js";
 import { onConnectCreated } from "./inngest/function/on-connect.js";
 import { inngest } from "./inngest/client.js";
+import connectDB from "./config/connectDB.js";
+
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -36,4 +39,7 @@ app.get("/", (req, res) => {
 	res.send("Hello World");
 });
 
-export default app;
+app.listen(PORT, () => {
+	connectDB();
+	console.log(" 🚀 Server at http://localhost:3000 ");
+});

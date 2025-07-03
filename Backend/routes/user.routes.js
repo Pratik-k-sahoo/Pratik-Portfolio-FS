@@ -1,6 +1,12 @@
 import express from "express";
 const router = express.Router();
-import { createUser, loginUser } from "../controller/user.controller.js";
+import {
+	createUser,
+	getUsers,
+	loginUser,
+	updateUser,
+} from "../controller/user.controller.js";
+import { authenticate } from "../middleware/auth.middleware.js";
 
 router.post("/register", async (req, res) => {
 	const { username, email, password } = req.body;
@@ -14,10 +20,7 @@ router.post("/register", async (req, res) => {
 		});
 		res.status(201).json({
 			message: "User registered successfully",
-			user: {
-				details: newUser._doc,
-				role: "user",
-			},
+			user: newUser,
 			token,
 		});
 	} catch (err) {
@@ -43,10 +46,7 @@ router.post("/login", async (req, res) => {
 		});
 		res.status(200).json({
 			message: "Login successful",
-			user: {
-				details: user,
-				role: "user",
-			},
+			user,
 			token,
 		});
 	} catch (err) {
@@ -64,4 +64,6 @@ router.get("/logout", (req, res) => {
 	res.status(200).json({ message: "Logout successful" });
 });
 
+router.get("/users", authenticate, getUsers);
+router.post("/update-user", authenticate, updateUser);
 export default router;

@@ -43,8 +43,8 @@ export const sendTicketMail = async (to, subject, text) => {
 	try {
 		console.log(to);
 		const formData = {
-			name: to.name,
-			email: to.createdBy.email,
+			name: to?.name,
+			email: to?.email,
 			subject,
 			message: text,
 		};

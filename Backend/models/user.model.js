@@ -31,6 +31,12 @@ const userSchema = new Schema(
 			minlength: 6,
 			maxlength: 100,
 		},
+		role: {
+			type: String,
+			default: "user",
+			enum: ["user", "moderator", "admin"],
+		},
+		skills: [String],
 	},
 	{
 		timestamps: true,
@@ -50,7 +56,7 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 
 userSchema.methods.generateAuthToken = function () {
 	const token = jwt.sign(
-		{ _id: this._id, username: this.username },
+		{ _id: this._id, username: this.username, role: this.role },
 		process.env.JWT_SECRET,
 		{
 			expiresIn: "1h",

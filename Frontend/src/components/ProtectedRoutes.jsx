@@ -3,20 +3,16 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoutes = ({ children }) => {
-  const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+	const { user } = useSelector((state) => state.auth);
+	const navigate = useNavigate();
 
-    useEffect(() => {
-        if(user === null || user.role !== 'admin') {
-            navigate("/");
-        }
-    }, [user, navigate]);
+	useEffect(() => {
+		if (user === null || user.role !== "admin") {
+			navigate("/");
+		}
+	}, [user, navigate]);
 
-    return (
-        <>
-            {children}
-        </>
-    )
+	return <>{children}</>;
 };
 
-export default ProtectedRoutes
+export default ProtectedRoutes;

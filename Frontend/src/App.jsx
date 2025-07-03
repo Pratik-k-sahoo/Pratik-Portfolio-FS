@@ -15,6 +15,8 @@ import useGetProjects from "./hooks/useGetProjects";
 import UpdateProfile from "./page/UpdateProfile";
 import CheckAuth from "./components/Check-Auth";
 import Tickets from "./page/Tickets";
+import TicketDetailsPage from "./page/TicketDetails";
+import Admin from "./page/Admin";
 
 const appRouter = createBrowserRouter([
 	{
@@ -68,6 +70,14 @@ const appRouter = createBrowserRouter([
 				],
 			},
 			{
+				path: "raise-ticket/:id",
+				element: (
+					<CheckAuth isProtected={true}>
+						<TicketDetailsPage />
+					</CheckAuth>
+				),
+			},
+			{
 				path: "register",
 				element: <Register />,
 			},
@@ -87,6 +97,14 @@ const appRouter = createBrowserRouter([
 					</ProtectedRoutes>
 				),
 				children: [
+					{
+						index: true,
+						element: (
+							<CheckAuth isProtected={true}>
+								<Admin />
+							</CheckAuth>
+						),
+					},
 					{
 						path: "update-profile",
 						element: <UpdateProfile />,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { setFetchUsers } from "../slice/userSlice";
+import { setFetchUsers } from "../redux/authSlice";
 
 const useGetUsers = () => {
 	const dispatch = useDispatch();
@@ -10,14 +10,11 @@ const useGetUsers = () => {
 		const fetchUsers = async () => {
 			try {
 				const token = localStorage.getItem("token");
-				const res = await axios.get(
-					`${import.meta.env.VITE_SERVER_URL}/auth/users`,
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
+				const res = await axios.get(`/v1/user/users`, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
 				if (res.status === 200) {
 					dispatch(setFetchUsers(res.data.users));
 				} else {

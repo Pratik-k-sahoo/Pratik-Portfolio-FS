@@ -28,7 +28,7 @@ const Tickets = () => {
 		setLoading(true);
 		try {
 			const res = await axios.post(
-				`${import.meta.env.VITE_SERVER_URL}/tickets`,
+				`/v1/tickets`,
 				JSON.stringify(form),
 				{
 					headers: {
@@ -41,7 +41,7 @@ const Tickets = () => {
 			if (res.status === 201) {
 				setForm({ title: "", description: "" });
 				setFilterTicket((prev) => [res.data.ticket, ...prev]);
-				navigate("/");
+				navigate("/raise-ticket");
 			} else {
 				alert(res.data.message || "Ticket creation failed");
 			}
@@ -86,7 +86,7 @@ const Tickets = () => {
 						<Link
 							key={ticket._id}
 							className="card shadow-md p-4 bg-gray-800"
-							to={`/tickets/${ticket._id}`}
+							to={`/raise-ticket/${ticket._id}`}
 						>
 							<h3 className="font-bold text-lg">{ticket.title}</h3>
 							<p className="text-sm">{ticket.description}</p>

@@ -27,8 +27,12 @@ export const onConnectCreated = inngest.createFunction(
 					const finalConnection = await Connect.findById(
 						connection._id
 					).populate("createdBy");
+					const dataToSend = {
+						name: finalConnection?.name,
+						email: finalConnection?.createdBy?.email,
+					};
 					await sendTicketMail(
-						finalConnection,
+						dataToSend,
 						"Recieved your message 🚀",
 						`${finalConnection.message}`
 					);
