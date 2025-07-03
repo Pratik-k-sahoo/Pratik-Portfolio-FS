@@ -1,52 +1,60 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { setProfile } from "../redux/profileSlice";
+import { useNavigate } from "react-router-dom";
 
 const UpdateformData = () => {
 	const { profile } = useSelector((state) => state.profile);
 	const [checkedFields, setCheckedFields] = useState([]);
-	const [formData, setFormData] = useState({
-		name: profile.name || "",
-		IAM: profile.IAM.join(" | ") || [],
-		image: profile.image || "",
-		genre: profile.genre || "",
-		about: profile.about || "",
-		socialLinks: {
-			gitHub: profile.socialLinks?.gitHub || "",
-			linkedIn: profile.socialLinks?.linkedIn || "",
-			twitter: profile.socialLinks?.twitter || "",
-			instagram: profile.socialLinks?.instagram || "",
-			facebook: profile.socialLinks?.facebook || "",
-			youtube: profile.socialLinks?.youtube || "",
-		},
-		resume: profile.resume || "",
-		education: {
-			tenth: {
-				institution: profile.education?.tenth?.institution || "",
-				year: profile.education?.tenth?.year || "",
-				percentage: profile.education?.tenth?.percentage || "",
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const [formData, setFormData] = useState([]);
+
+	useEffect(() => {
+		setFormData({
+			name: profile.name || "",
+			IAM: profile.IAM.join(" | ") || [],
+			image: profile.image || "",
+			genre: profile.genre || "",
+			about: profile.about || "",
+			socialLinks: {
+				gitHub: profile.socialLinks?.gitHub || "",
+				linkedIn: profile.socialLinks?.linkedIn || "",
+				twitter: profile.socialLinks?.twitter || "",
+				instagram: profile.socialLinks?.instagram || "",
+				facebook: profile.socialLinks?.facebook || "",
+				youtube: profile.socialLinks?.youtube || "",
 			},
-			twelfth: {
-				institution: profile.education?.twelfth?.institution || "",
-				year: profile.education?.twelfth?.year || "",
-				percentage: profile.education?.twelfth?.percentage || "",
+			resume: profile.resume || "",
+			education: {
+				tenth: {
+					institution: profile.education?.tenth?.institution || "",
+					year: profile.education?.tenth?.year || "",
+					percentage: profile.education?.tenth?.percentage || "",
+				},
+				twelfth: {
+					institution: profile.education?.twelfth?.institution || "",
+					year: profile.education?.twelfth?.year || "",
+					percentage: profile.education?.twelfth?.percentage || "",
+				},
+				graduation: {
+					institution: profile.education?.graduation?.institution || "",
+					year: profile.education?.graduation?.year || "",
+					percentage: profile.education?.graduation?.percentage || "",
+				},
 			},
-			graduation: {
-				institution: profile.education?.graduation?.institution || "",
-				year: profile.education?.graduation?.year || "",
-				percentage: profile.education?.graduation?.percentage || "",
+			skills: {
+				language: profile.skills?.language.join(" | ") || [],
+				tools: profile.skills?.tools.join(" | ") || [],
+				tech: profile.skills?.tech.join(" | ") || [],
+				database: profile.skills?.database.join(" | ") || [],
+				os: profile.skills?.os.join(" | ") || [],
+				fundamentals: profile.skills?.fundamentals.join(" | ") || [],
+				others: profile.skills?.others.join(" | ") || [],
 			},
-		},
-		skills: {
-			language: profile.skills?.language.join(" | ") || [],
-			tools: profile.skills?.tools.join(" | ") || [],
-			tech: profile.skills?.tech.join(" | ") || [],
-			database: profile.skills?.database.join(" | ") || [],
-			os: profile.skills?.os.join(" | ") || [],
-			fundamentals: profile.skills?.fundamentals.join(" | ") || [],
-			others: profile.skills?.others.join(" | ") || [],
-		},
-	});
+		});
+	}, [profile, dispatch]);
 
 	const handleChange = (e) => {
 		const { name, value, type, files } = e.target;
@@ -112,17 +120,20 @@ const UpdateformData = () => {
 				}
 			});
 
-			const response = await axios.post("/v1/admin/update-profile", formDataToSubmit, {
-				headers: {
-					"Content-Type": "multipart/form-data",
-				},
-        withCredentials: true,
-			});
-			console.log("Profile updated successfully:", response.data.message);
-			// formDataToSubmit.append("CheckedFields", checkedFields);
-			// for (let pair of formDataToSubmit.entries()) {
-			// 	console.log(pair[0].toString() + " " + pair[1].toString());
-			// }
+			const response = await axios.post(
+				"/v1/admin/update-profile",
+				formDataToSubmit,
+				{
+					headers: {
+						"Content-Type": "multipart/form-data",
+					},
+					withCredentials: true,
+				}
+			);
+			if (response.status === 200) {
+				dispatch(setProfile(response.data.profile));
+				navigate("/");
+			}
 		} catch (error) {
 			console.error("Error updating profile:", error);
 		}

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ConnectSection = () => {
 	const { user } = useSelector((state) => state.auth);
+	const navigate = useNavigate();
 	const [connectMsg, setConnectMsg] = useState({
 		name: "",
 		message: "",
@@ -30,6 +32,7 @@ const ConnectSection = () => {
 					message: "",
 					mobile: "",
 				});
+				navigate("/contact-me");
 			}
 		} catch (error) {
 			console.error("Error sending message:", error);
@@ -37,7 +40,10 @@ const ConnectSection = () => {
 	};
 
 	return (
-		<section className="pb-16 lg:py-24" id="project">
+		<section
+			className="py-16 pt-20 lg:py-24 lg:pt-20 sm:pt-40 md:pt-32"
+			id="project"
+		>
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-12">
 					<h2 className="text-3xl font-bold mb-4">Connect with Me</h2>
@@ -81,10 +87,10 @@ const ConnectSection = () => {
 								name="username"
 								required
 								placeholder="Username"
-								value={user?.details?.username || ""}
-								disabled={user?.details.username ? true : false}
+								value={user?.username || ""}
+								disabled={user?.username ? true : false}
 								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
-									user?.details.username ? "cursor-not-allowed" : ""
+									user?.username ? "cursor-not-allowed" : ""
 								}`}
 							/>
 							<input
@@ -92,10 +98,10 @@ const ConnectSection = () => {
 								id="email"
 								name="email"
 								required
-								value={user?.details.email || ""}
+								value={user?.email || ""}
 								placeholder="Email Address"
 								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
-									user?.details.email ? "cursor-not-allowed" : ""
+									user?.email ? "cursor-not-allowed" : ""
 								}`}
 							/>
 						</div>
