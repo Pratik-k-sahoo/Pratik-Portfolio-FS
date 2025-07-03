@@ -10,8 +10,8 @@ export const isAdmin = (req, res, next) => {
 	}
 	try {
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
-		req.user = decoded.username;
-		if (req.user !== process.env.ADMIN_USERNAME) {
+		req.user = decoded;
+		if (req.user.username !== process.env.ADMIN_USERNAME) {
 			return res.status(403).json({ message: "Access denied. Not an admin." });
 		}
 		next();

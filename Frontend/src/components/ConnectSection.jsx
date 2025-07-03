@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 const ConnectSection = () => {
 	const { user } = useSelector((state) => state.auth);
@@ -10,30 +11,26 @@ const ConnectSection = () => {
 		mobile: "",
 	});
 
-	const handleSendMessage = (e) => {
+	const handleSendMessage = async (e) => {
 		e.preventDefault();
 
 		try {
-			const formData = {
-				name: connectMsg.name,
-				message: connectMsg.message,
-				mobile: connectMsg.mobile,
-				username: user?.username || connectMsg.username,
-				email: user?.email || connectMsg.email,
-			};
+			const token = localStorage.getItem("token");
+			console.log(connectMsg);
+			const response = await axios.post("/v1/connect/create", connectMsg, {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			});
 
-			emailjs
-				.send("service_dy3rje4", "template_arvsh5q", formData, {
-					publicKey: "RsegK776g1Xct5GMM",
-				})
-				.then(
-					(response) => {
-						console.log("SUCCESS!", response.status, response.text);
-					},
-					(err) => {
-						console.log("FAILED...", err);
-					}
-				);
+			if (response.status === 201) {
+				setConnectMsg({
+					name: "",
+					message: "",
+					mobile: "",
+				});
+			}
 		} catch (error) {
 			console.error("Error sending message:", error);
 		}
@@ -58,16 +55,18 @@ const ConnectSection = () => {
 								name="name"
 								placeholder="Full Name"
 								required
+								value={connectMsg.name}
 								onChange={(e) =>
 									setConnectMsg({ ...connectMsg, name: e.target.value })
 								}
 								className="mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white"
 							/>
 							<input
-								type="number"
+								type="text"
 								id="mobile"
 								name="mobile"
 								required
+								value={connectMsg.mobile}
 								onChange={(e) =>
 									setConnectMsg({ ...connectMsg, mobile: e.target.value })
 								}
@@ -82,10 +81,10 @@ const ConnectSection = () => {
 								name="username"
 								required
 								placeholder="Username"
-								value={user?.username || ""}
-								disabled={user?.username ? true : false}
+								value={user?.details?.username || ""}
+								disabled={user?.details.username ? true : false}
 								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
-									user?.username ? "cursor-not-allowed" : ""
+									user?.details.username ? "cursor-not-allowed" : ""
 								}`}
 							/>
 							<input
@@ -93,10 +92,10 @@ const ConnectSection = () => {
 								id="email"
 								name="email"
 								required
-								value={user?.email || ""}
+								value={user?.details.email || ""}
 								placeholder="Email Address"
 								className={`mt-1 block w-full px-4 py-3 bg-gray-900 rounded-md shadow-xs outline-hidden border-0 sm:text-sm text-lg placeholder:text-gray-600 font-semibold text-white focus:ring-2 focus:ring-white focus:border-white ${
-									user?.email ? "cursor-not-allowed" : ""
+									user?.details.email ? "cursor-not-allowed" : ""
 								}`}
 							/>
 						</div>
@@ -105,6 +104,7 @@ const ConnectSection = () => {
 								name="message"
 								id="message"
 								placeholder="Your Message"
+								value={connectMsg.message}
 								onChange={(e) =>
 									setConnectMsg({ ...connectMsg, message: e.target.value })
 								}

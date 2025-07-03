@@ -1,8 +1,15 @@
 import User from '../models/user.model.js';
+import {inngest} from "../inngest/client.js"
 
 export const createUser = async (username, email, password) => {
   const newUser = new User({ username, email, password });
   await newUser.save();
+
+  await inngest.send({
+		name: "user/signup",
+		data: { email },
+	});
+  
   return newUser;
 }
 
