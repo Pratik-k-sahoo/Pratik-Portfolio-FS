@@ -13,11 +13,14 @@ const TicketDetailsPage = () => {
 	useEffect(() => {
 		const fetchTicket = async () => {
 			try {
-				const res = await axios.get(`/v1/tickets/${id}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const res = await axios.get(
+					`${import.meta.env.VITE_SERVER_URL}/v1/tickets/${id}`,
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
+				);
 				if (res.status === 200) {
 					setTicket(res.data.ticket);
 				} else {

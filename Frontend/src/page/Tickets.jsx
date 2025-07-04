@@ -28,7 +28,7 @@ const Tickets = () => {
 		setLoading(true);
 		try {
 			const res = await axios.post(
-				`/v1/tickets`,
+				`${import.meta.env.VITE_SERVER_URL}/v1/tickets`,
 				JSON.stringify(form),
 				{
 					headers: {

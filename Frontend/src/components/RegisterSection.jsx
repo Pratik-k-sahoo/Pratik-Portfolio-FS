@@ -16,7 +16,7 @@ const RegisterSection = () => {
 		e.preventDefault();
 		try {
 			const response = await axios.post(
-				"/v1/user/register",
+				`${import.meta.env.VITE_SERVER_URL}/v1/user/register`,
 				{
 					username,
 					email,

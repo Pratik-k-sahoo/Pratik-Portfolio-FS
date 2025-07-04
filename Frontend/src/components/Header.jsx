@@ -14,9 +14,12 @@ const Header = ({ page }) => {
 
 	const handleLogout = async () => {
 		try {
-			const response = await axios.get("/v1/user/logout", {
-				withCredentials: true,
-			});
+			const response = await axios.get(
+				`${import.meta.env.VITE_SERVER_URL}/v1/user/logout`,
+				{
+					withCredentials: true,
+				}
+			);
 			if (response.status === 200) {
 				dispatch(logout());
 				navigate("/");

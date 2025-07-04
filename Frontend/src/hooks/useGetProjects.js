@@ -11,9 +11,12 @@ const useGetProjects = () => {
     const fetchProjects = async () => {
       try {
         dispatch(setLoading(true));
-        const response = await axios.get("/v1/admin/get-projects", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+					`${import.meta.env.VITE_SERVER_URL}/v1/admin/get-projects`,
+					{
+						withCredentials: true,
+					}
+				);
         dispatch(setProject(response.data.projects));
       } catch(err) {
         console.error("Error fetching projects:", err);

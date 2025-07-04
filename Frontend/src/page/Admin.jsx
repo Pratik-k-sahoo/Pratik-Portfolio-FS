@@ -34,7 +34,7 @@ const Admin = () => {
 	const handleUpdate = async () => {
 		try {
 			const res = await axios.post(
-				`/v1/user/update-user`,
+				`${import.meta.env.VITE_SERVER_URL}/v1/user/update-user`,
 				JSON.stringify({
 					email: editingUser,
 					role: formData.role,

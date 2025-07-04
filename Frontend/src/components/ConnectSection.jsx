@@ -18,7 +18,7 @@ const ConnectSection = () => {
 
 		try {
 			const token = localStorage.getItem("token");
-			const response = await axios.post("/v1/connect/create", connectMsg, {
+			const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/v1/connect/create`, connectMsg, {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${token}`,

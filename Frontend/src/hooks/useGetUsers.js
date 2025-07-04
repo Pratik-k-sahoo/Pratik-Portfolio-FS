@@ -10,11 +10,14 @@ const useGetUsers = () => {
 		const fetchUsers = async () => {
 			try {
 				const token = localStorage.getItem("token");
-				const res = await axios.get(`/v1/user/users`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const res = await axios.get(
+					`${import.meta.env.VITE_SERVER_URL}/v1/user/users`,
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
+				);
 				if (res.status === 200) {
 					dispatch(setFetchUsers(res.data.users));
 				} else {

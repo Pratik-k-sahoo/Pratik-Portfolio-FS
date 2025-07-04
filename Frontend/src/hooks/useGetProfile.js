@@ -10,9 +10,12 @@ const useGetProfile = () => {
     const fetchProfile = async () => {
       try {
         dispatch(setLoading(true));
-        const response = await axios.get("/v1/admin/profile", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+					`${import.meta.env.VITE_SERVER_URL}/v1/admin/profile`,
+					{
+						withCredentials: true,
+					}
+				);
         dispatch(setProfile(response.data.profile));
       } catch (error) {
         console.error("Error fetching profile:", error);

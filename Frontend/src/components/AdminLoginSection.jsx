@@ -15,7 +15,7 @@ const AdminLoginSection = () => {
 		e.preventDefault();
 		try {
 			const response = await axios.post(
-				"/v1/admin/login",
+				`${import.meta.env.VITE_SERVER_URL}/v1/admin/login`,
 				{
 					username,
 					password,
