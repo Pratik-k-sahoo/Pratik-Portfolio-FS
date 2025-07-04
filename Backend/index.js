@@ -17,7 +17,7 @@ import connectDB from "./config/connectDB.js";
 
 const PORT = process.env.PORT || 3000;
 const corsOptions = {
-	origin: "https://pratik-portfolio-fs-fe.vercel.app",
+	origin: "https://portfolio.sipun.online/",
 	methods: ["GET", "POST", "PUT", "DELETE"],
 	credentials: true,
 };
