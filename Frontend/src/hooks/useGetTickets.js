@@ -11,7 +11,7 @@ const useGetTickets = () => {
 			try {
 				const token = localStorage.getItem("token");
 				const res = await axios.get(
-					`v1/tickets`,
+					`${import.meta.env.VITE_SERVER_URL}/v1/tickets`,
 					{
 						headers: { Authorization: `Bearer ${token}` },
 					}
