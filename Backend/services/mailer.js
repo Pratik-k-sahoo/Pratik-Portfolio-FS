@@ -12,11 +12,11 @@ export const sendLoginMail = async (to, subject, text) => {
 		console.log(formData);
 
 		var data = {
-			service_id: "service_dy3rje4",
-			template_id: "template_jtipxof",
-			user_id: "RsegK776g1Xct5GMM",
+			service_id: process.env.MAILER_SERVICE_ID,
+			template_id: process.env.MAILER_LOGIN_TEMPLATE,
+			user_id: process.env.MAILER_PUBLIC_KEY,
 			template_params: formData,
-			accessToken: "C4Ef5YJEjJ8513x1wFiCz",
+			accessToken: process.env.MAILER_PRIVATE_KEY,
 		};
 
 		const response = await axios.post(
@@ -50,11 +50,11 @@ export const sendTicketMail = async (to, subject, text) => {
 		};
 
 		var data = {
-			service_id: "service_dy3rje4",
-			template_id: "template_arvsh5q",
-			user_id: "RsegK776g1Xct5GMM",
+			service_id: process.env.MAILER_SERVICE_ID,
+			template_id: process.env.MAILER_NOTIFY_TEMPLATE,
+			user_id: process.env.MAILER_PUBLIC_KEY,
 			template_params: formData,
-			accessToken: "C4Ef5YJEjJ8513x1wFiCz",
+			accessToken: process.env.MAILER_PRIVATE_KEY,
 		};
 
 		const response = await axios.post(
