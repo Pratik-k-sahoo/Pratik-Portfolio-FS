@@ -9,7 +9,6 @@ export default defineConfig({
 			"/v1": {
 				target: "https://pratik-portfolio-fs-backend.onrender.com/api",
 				changeOrigin: true,
-				secure: false,
 			},
 		},
 	},
