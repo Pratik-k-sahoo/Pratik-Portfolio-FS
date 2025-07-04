@@ -69,7 +69,6 @@ export const updateProfile = async (profileData, image, resume) => {
       ...profile.toObject(),
 			...profileData,
 		};
-    console.log("Update Data: ", updateData);
 		if (image) {
 			const imageURL = await uploadImageToCloud(
 				image.buffer,

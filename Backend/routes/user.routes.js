@@ -10,7 +10,6 @@ import { authenticate } from "../middleware/auth.middleware.js";
 
 router.post("/register", async (req, res) => {
 	const { username, email, password } = req.body;
-	console.log(username, email, password);
 	try {
 		const newUser = await createUser(username, email, password);
 		const token = newUser.generateAuthToken();

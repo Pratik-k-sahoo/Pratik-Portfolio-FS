@@ -9,7 +9,6 @@ export const sendLoginMail = async (to, subject, text) => {
 			subject,
 			text,
 		};
-		console.log(formData);
 
 		var data = {
 			service_id: process.env.MAILER_SERVICE_ID,
@@ -29,9 +28,7 @@ export const sendLoginMail = async (to, subject, text) => {
 			}
 		);
 		if (response.status === 200) {
-			console.log("SUCCESS!", response.status, response.text);
 		} else {
-			console.log("FAILED...", err);
 		}
 	} catch (error) {
 		console.error("❌ Mail Error: ", error.message);
@@ -41,7 +38,6 @@ export const sendLoginMail = async (to, subject, text) => {
 
 export const sendTicketMail = async (to, subject, text) => {
 	try {
-		console.log(to);
 		const formData = {
 			name: to?.name,
 			email: to?.email,
@@ -67,9 +63,7 @@ export const sendTicketMail = async (to, subject, text) => {
 			}
 		);
 		if (response.status === 200) {
-			console.log("SUCCESS!", response.status, response.text);
 		} else {
-			console.log("FAILED...", err);
 		}
 	} catch (error) {
 		console.error("❌ Mail Error: ", error.message);

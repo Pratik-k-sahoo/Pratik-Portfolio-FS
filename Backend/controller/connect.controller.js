@@ -5,7 +5,6 @@ import { inngest } from "../inngest/client.js";
 export const createConnection = async (req, res) => {
 	try {
 		const { name, mobile, message } = req.body;
-		console.log(name, message, mobile);
 		const user = await User.findById(req.user._id);
 		const connection = await Connect.create({
 			name,

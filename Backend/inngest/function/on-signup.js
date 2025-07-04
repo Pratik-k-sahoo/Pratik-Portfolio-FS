@@ -25,7 +25,6 @@ export const onUserSignup = inngest.createFunction(
         `;
 				await sendLoginMail(user.email, subject, message);
 			});
-			console.log("All Complete");
 			return { success: true };
 		} catch (error) {
 			console.error("❌ Error running step: ", error.message);
