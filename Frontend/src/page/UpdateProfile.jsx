@@ -10,6 +10,7 @@ const UpdateformData = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState([]);
+	const token = localStorage.getItem("token");
 
 	useEffect(() => {
 		setFormData({
@@ -125,6 +126,7 @@ const UpdateformData = () => {
 				{
 					headers: {
 						"Content-Type": "multipart/form-data",
+						Authorization: `Bearer ${token}`,
 					},
 					withCredentials: true,
 				}
