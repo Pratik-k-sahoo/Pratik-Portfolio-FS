@@ -13,7 +13,6 @@ const useGetProfile = () => {
         const response = await axios.get("/v1/admin/profile", {
           withCredentials: true,
         });
-        console.log("Profile fetched:", response.data.profile);
         dispatch(setProfile(response.data.profile));
       } catch (error) {
         console.error("Error fetching profile:", error);

@@ -13,7 +13,6 @@ const TicketDetailsPage = () => {
 	useEffect(() => {
 		const fetchTicket = async () => {
 			try {
-				console.log(id);
 				const res = await axios.get(`/v1/tickets/${id}`, {
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -21,7 +20,6 @@ const TicketDetailsPage = () => {
 				});
 				if (res.status === 200) {
 					setTicket(res.data.ticket);
-					console.log(res.data.ticket);
 				} else {
 					alert(res.data.message || "Failed to fetch ticket");
 				}

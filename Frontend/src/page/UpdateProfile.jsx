@@ -84,7 +84,6 @@ const UpdateformData = () => {
 		e.preventDefault();
 		try {
 			const formDataToSubmit = new FormData();
-			console.log(formData);
 			Object.keys(formData).forEach((key) => {
 				if (checkedFields.includes(`${key}Check`)) {
 					if (

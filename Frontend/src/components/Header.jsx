@@ -18,7 +18,6 @@ const Header = ({ page }) => {
 				withCredentials: true,
 			});
 			if (response.status === 200) {
-				console.log("Logout successful");
 				dispatch(logout());
 				navigate("/");
 			}

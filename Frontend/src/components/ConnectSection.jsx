@@ -18,7 +18,6 @@ const ConnectSection = () => {
 
 		try {
 			const token = localStorage.getItem("token");
-			console.log(connectMsg);
 			const response = await axios.post("/v1/connect/create", connectMsg, {
 				headers: {
 					"Content-Type": "application/json",

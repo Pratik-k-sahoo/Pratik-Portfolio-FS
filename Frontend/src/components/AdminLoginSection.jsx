@@ -13,7 +13,6 @@ const AdminLoginSection = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Logging user:", { username, password });
 		try {
 			const response = await axios.post(
 				"/v1/admin/login",
@@ -61,7 +60,6 @@ const AdminLoginSection = () => {
 								name="username"
 								value={username}
 								onChange={(e) => {
-									console.log(e.target.value);
 									setUsername(e.target.value);
 								}}
 								className="rounded-lg text-black p-2 bg-white"

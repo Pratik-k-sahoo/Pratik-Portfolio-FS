@@ -4,7 +4,6 @@ import { twMerge } from "tailwind-merge";
 import { Fragment } from "react";
 
 const ToolboxItem = ({ items, className, itemsWrapperClassName }) => {
-	console.log("ToolboxItem rendered with items:", items);
 	return (
 		<div
 			className={twMerge(

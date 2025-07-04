@@ -14,7 +14,6 @@ const RegisterSection = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Registering user:", { username, email, password });
 		try {
 			const response = await axios.post(
 				"/v1/user/register",

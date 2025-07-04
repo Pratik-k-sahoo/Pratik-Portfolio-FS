@@ -14,7 +14,6 @@ const useGetProjects = () => {
         const response = await axios.get("/v1/admin/get-projects", {
           withCredentials: true,
         });
-        console.log("Projects fetched:", response.data.projects);
         dispatch(setProject(response.data.projects));
       } catch(err) {
         console.error("Error fetching projects:", err);

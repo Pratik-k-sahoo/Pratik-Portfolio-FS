@@ -3,8 +3,6 @@ import CheckIcon from "../assets/icons/check-circle.svg?react";
 import ArrowUpRight from "../assets/icons/arrow-up-right.svg?react";
 
 const ProjectCard = ({ project, idx }) => {
-  console.log(idx);
-  console.log(project);
 	return (
 		<div className="sticky" style={{
       top: `calc(64px + ${idx * 40}px)`
