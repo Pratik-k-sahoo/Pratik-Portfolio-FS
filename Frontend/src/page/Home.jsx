@@ -37,7 +37,7 @@ const Home = () => {
 			{load && profile?.name && (
 				<button
 					ref={btn}
-					className="absolute bottom-0 left-[50%] transform -translate-y-[50%] -translate-x-[50%] border-2 rounded-2xl px-5 py-2 cursor-pointer"
+					className="absolute top-20 left-[50%] transform -translate-y-[50%] -translate-x-[50%] border-2 rounded-2xl px-5 py-2 cursor-pointer bg-emerald-900/20 text-cyan-600"
 					onClick={handlePortfolio}
 				>
 					Show Portfolio
